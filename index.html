@@ -167,6 +167,11 @@
             flex-shrink: 0;
         }
 
+        .btn-tutorial {
+            background: #27ae60;
+            grid-column: span 2;
+        }
+
         .btn {
             background: #3d4e9f;
             color: white;
@@ -269,13 +274,20 @@
             border: 1px solid #ffeaa7;
         }
 
-        .copyright {
+        .footer-container {
             position: fixed;
             bottom: 10px;
-            left: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .copyright {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.7);
-            text-align: left;
+            text-align: center;
             line-height: 1.5;
         }
 
@@ -289,10 +301,7 @@
             text-decoration: underline;
         }
 
-        .dev-log-btn {
-            position: fixed;
-            bottom: 10px;
-            right: 20px;
+        .footer-btn {
             background: rgba(61, 78, 159, 0.8);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -302,9 +311,10 @@
             font-size: 11px;
             font-weight: bold;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
-        .dev-log-btn:hover {
+        .footer-btn:hover {
             background: rgba(61, 78, 159, 1);
         }
 
@@ -422,6 +432,7 @@
 
             <div class="right-panel">
                 <div class="controls">
+                    <button class="btn btn-tutorial" onclick="showTutorial()">📖 사용법 안내</button>
                     <button class="btn" onclick="generateQuiz(2, 'emission')">방출 2개</button>
                     <button class="btn" onclick="generateQuiz(3, 'emission')">방출 3개</button>
                     <button class="btn" onclick="generateQuiz(2, 'absorption')">흡수 2개</button>
@@ -450,12 +461,87 @@
         </div>
     </div>
 
-    <div class="copyright">
-        ⓒ 2025 충남삼성고등학교 신도경T<br>
-        <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a>
+    <div class="footer-container">
+        <div class="copyright">
+            ⓒ 2025 충남삼성고등학교 신도경T<br>
+            <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a>
+        </div>
+        <button class="footer-btn" id="TutorialBtn">사용법</button>
+        <button class="footer-btn" id="DevLogBtn">개발자 로그</button>
     </div>
 
-    <button class="dev-log-btn" id="DevLogBtn">개발자 로그</button>
+    <div class="modal" id="tutorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📖 사용법 안내</h2>
+                <button class="modal-close" id="closeTutorialModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-entry">
+                    <div class="log-date">🎯 프로그램 소개</div>
+                    <div class="log-text">
+                        <strong>원소 방출 스펙트럼 퀴즈</strong>는 각 원소의 고유한 스펙트럼 패턴을 학습하고, 혼합된 스펙트럼에서 원소를 식별하는 능력을 키우기 위한 교육용 프로그램입니다.
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">📚 기본 사용법</div>
+                    <div class="log-text">
+                        <strong>1단계: 원소 스펙트럼 관찰</strong><br>
+                        • 화면 왼쪽에 7개 원소(수소, 헬륨, 네온, 나트륨, 수은, 리튬, 크립톤)의 스펙트럼이 표시됩니다.<br>
+                        • 각 원소는 고유한 파장의 빛을 방출하여 독특한 선 스펙트럼을 형성합니다.<br>
+                        • 스펙트럼 아래의 숫자는 파장(nm)을 나타냅니다.<br><br>
+                        
+                        <strong>2단계: 퀴즈 문제 생성</strong><br>
+                        • 오른쪽 상단의 버튼을 클릭하여 퀴즈를 시작하세요.<br>
+                        • <strong>방출 스펙트럼</strong>: 검은 배경에 색깔 선이 표시됩니다.<br>
+                        • <strong>흡수 스펙트럼</strong>: 연속 스펙트럼에 검은 선이 표시됩니다.<br>
+                        • 숫자(2~5개)는 혼합된 원소의 개수를 의미합니다.<br><br>
+                        
+                        <strong>3단계: 원소 선택</strong><br>
+                        • 혼합 스펙트럼을 보고 어떤 원소들이 섞여 있는지 추론하세요.<br>
+                        • 아래 원소 버튼을 클릭하여 답을 선택합니다.<br>
+                        • 선택된 버튼은 파란색으로 변합니다.<br>
+                        • 다시 클릭하면 선택이 취소됩니다.<br><br>
+                        
+                        <strong>4단계: 정답 확인</strong><br>
+                        • <strong>"정답 확인"</strong> 버튼을 눌러 결과를 확인하세요.<br>
+                        • 모두 맞으면 🎉 완전 정답 메시지가 표시됩니다.<br>
+                        • 일부만 맞으면 맞춘 개수와 원소가 표시됩니다.<br><br>
+                        
+                        <strong>5단계: 정답 보기</strong><br>
+                        • <strong>"정답 표시"</strong> 버튼을 누르면 왼쪽 스펙트럼 목록에서 정답 원소가 빨간 테두리로 강조됩니다.<br>
+                        • <strong>"정답 숨김"</strong> 버튼을 누르면 강조가 사라집니다.
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">💡 학습 팁</div>
+                    <div class="log-text">
+                        <strong>효과적인 학습 방법:</strong><br>
+                        • 먼저 각 원소의 스펙트럼 패턴을 충분히 관찰하세요.<br>
+                        • 특징적인 선의 위치와 색깔을 기억하세요.<br>
+                        • 쉬운 문제(2개)부터 시작해서 점차 난이도를 높이세요.<br>
+                        • 틀린 문제는 "정답 표시"를 통해 복습하세요.<br>
+                        • 반복 연습을 통해 스펙트럼 패턴 인식 능력을 향상시키세요.<br><br>
+                        
+                        <strong>스펙트럼 특징 파악하기:</strong><br>
+                        • 수소(H): 빨강, 청록, 남색, 보라색 4개의 선<br>
+                        • 헬륨(He): 노랑~주황 영역에 여러 선<br>
+                        • 나트륨(Na): 노란색 영역에 밝은 이중선이 특징<br>
+                        • 수은(Hg): 초록색 선이 매우 밝게 나타남
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">🔬 과학적 배경</div>
+                    <div class="log-text">
+                        원자가 에너지를 흡수하면 전자가 높은 에너지 준위로 이동하고, 다시 낮은 준위로 떨어질 때 특정 파장의 빛을 방출합니다. 각 원소는 고유한 에너지 준위 구조를 가지므로, 방출하는 빛의 파장도 원소마다 다릅니다. 이를 이용하면 멀리 있는 별의 구성 원소도 알아낼 수 있습니다!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal" id="devLogModal">
         <div class="modal-content">
@@ -480,16 +566,21 @@
         const ELEMENTS = {
             'H': [410.2, 434.0, 486.1, 656.3],
             'He': [447.1, 471.3, 492.2, 501.6, 587.6, 667.8, 706.5],
-            'Li': [460.3, 497.2, 610.4, 670.8],
-            'C': [426.7, 505.2, 538.0, 580.1, 658.8],
-            'N': [399.5, 404.1, 413.1, 444.7, 500.5, 567.9, 648.2, 661.1],
-            'O': [436.8, 441.5, 464.9, 533.1, 615.6, 645.6],
+            'Ne': [540.1, 585.2, 614.3, 640.2, 650.7, 703.2],
             'Na': [498.3, 568.3, 568.8, 588.9, 589.6, 615.4, 616.1],
-            'Mg': [470.3, 516.7, 517.3, 518.4],
-            'Ca': [393.4, 396.8, 422.7, 445.5, 518.9, 558.9, 585.7, 610.3, 612.2, 616.2, 643.9, 646.3, 649.4, 650.9, 714.8],
-            'Fe': [404.6, 438.4, 466.8, 489.1, 495.8, 516.7, 526.9, 532.8, 537.1, 559.9],
-            'Sr': [407.8, 421.6, 460.7, 483.2, 487.2, 496.2, 689.3, 707.0],
-            'Ba': [455.4, 487.9, 493.4, 553.5, 577.8, 614.2, 659.5, 705.9, 719.6, 728.0]
+            'Hg': [404.7, 435.8, 546.1, 577.0, 579.1],
+            'Li': [460.3, 497.2, 610.4, 670.8],
+            'Kr': [427.4, 431.9, 436.3, 450.2, 557.0, 587.1, 760.2, 769.5, 810.4]
+        };
+
+        const ELEMENT_NAMES = {
+            'H': '수소',
+            'He': '헬륨',
+            'Ne': '네온',
+            'Na': '나트륨',
+            'Hg': '수은',
+            'Li': '리튬',
+            'Kr': '크립톤'
         };
 
         const allElements = Object.keys(ELEMENTS);
@@ -564,7 +655,7 @@
 
                 const label = document.createElement('div');
                 label.className = 'element-label';
-                label.textContent = element;
+                label.textContent = `${element}(${ELEMENT_NAMES[element]})`;
 
                 const spectrumBar = document.createElement('div');
                 spectrumBar.className = 'spectrum-bar';
@@ -686,7 +777,7 @@
             allElements.forEach(element => {
                 const checkboxItem = document.createElement('div');
                 checkboxItem.className = 'checkbox-item';
-                checkboxItem.textContent = element;
+                checkboxItem.textContent = `${element}(${ELEMENT_NAMES[element]})`;
                 checkboxItem.dataset.element = element;
                 
                 checkboxItem.addEventListener('click', function() {
@@ -736,6 +827,22 @@
         }
 
         // 모달 관련 기능
+        function showTutorial() {
+            document.getElementById('tutorialModal').classList.add('show');
+        }
+
+        document.getElementById('TutorialBtn').addEventListener('click', showTutorial);
+
+        document.getElementById('closeTutorialModal').addEventListener('click', function() {
+            document.getElementById('tutorialModal').classList.remove('show');
+        });
+
+        document.getElementById('tutorialModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
+
         document.getElementById('DevLogBtn').addEventListener('click', function() {
             document.getElementById('devLogModal').classList.add('show');
         });

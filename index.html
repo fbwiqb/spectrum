@@ -13,29 +13,31 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #3d4e9f;
             min-height: 100vh;
             padding: 20px;
+            padding-bottom: 60px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            border-radius: 0;
             padding: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            height: calc(100vh - 40px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            height: calc(100vh - 100px);
             display: flex;
             flex-direction: column;
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: #3d4e9f;
             margin-bottom: 15px;
             font-size: 1.5em;
             flex-shrink: 0;
+            font-weight: bold;
         }
 
         .main-content {
@@ -60,13 +62,14 @@
 
         .spectrum-display {
             background: white;
-            border-radius: 10px;
+            border-radius: 0;
             padding: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             flex: 1;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: 2px solid #3d4e9f;
         }
 
         .spectrum-grid {
@@ -79,12 +82,13 @@
 
         .quiz-section {
             background: white;
-            border-radius: 10px;
+            border-radius: 0;
             padding: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             flex: 1;
             display: flex;
             flex-direction: column;
+            border: 2px solid #3d4e9f;
         }
 
         .quiz-section.hidden {
@@ -99,12 +103,13 @@
         .quiz-spectrum h3 {
             margin-bottom: 10px;
             text-align: center;
-            color: #333;
+            color: #3d4e9f;
+            font-weight: bold;
         }
 
         .element-spectrum {
             border: 2px solid transparent;
-            border-radius: 5px;
+            border-radius: 0;
             padding: 5px;
             display: flex;
             flex-direction: column;
@@ -112,7 +117,7 @@
         }
 
         .element-spectrum.highlighted {
-            border-color: red;
+            border-color: #ff4444;
             background-color: #ffe5e5;
         }
 
@@ -122,6 +127,7 @@
             font-size: 12px;
             text-align: center;
             flex-shrink: 0;
+            color: #3d4e9f;
         }
 
         .spectrum-bar {
@@ -129,7 +135,7 @@
             background: linear-gradient(to right, #000 0%, #000 100%);
             position: relative;
             border: 1px solid #ccc;
-            border-radius: 3px;
+            border-radius: 0;
             flex-shrink: 0;
         }
 
@@ -162,19 +168,19 @@
         }
 
         .btn {
-            background: #3498db;
+            background: #3d4e9f;
             color: white;
             border: none;
             padding: 8px 10px;
-            border-radius: 8px;
+            border-radius: 0;
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .btn:hover {
-            background: #2980b9;
+            background: #2d3e8f;
             transform: translateY(-1px);
         }
 
@@ -189,7 +195,7 @@
         .checkbox-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin: 10px 0;
             flex: 1;
             overflow-y: auto;
@@ -198,19 +204,30 @@
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 12px;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background 0.2s;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 0;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 2px solid #3d4e9f;
+            background: white;
+            color: #3d4e9f;
+            user-select: none;
         }
 
         .checkbox-item:hover {
-            background: #f0f0f0;
+            background: #f0f0ff;
+        }
+
+        .checkbox-item.selected {
+            background: #3d4e9f;
+            color: white;
         }
 
         .checkbox-item input {
-            margin-right: 5px;
+            display: none;
         }
 
         .submit-btn {
@@ -218,7 +235,7 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 0;
             cursor: pointer;
             font-size: 14px;
             font-weight: bold;
@@ -233,7 +250,7 @@
         .result-message {
             margin: 10px 0;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 0;
             text-align: center;
             font-weight: bold;
             font-size: 12px;
@@ -251,68 +268,237 @@
             color: #856404;
             border: 1px solid #ffeaa7;
         }
+
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            left: 20px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .copyright a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            color: rgba(255, 255, 255, 1);
+            text-decoration: underline;
+        }
+
+        .dev-log-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            background: rgba(61, 78, 159, 0.8);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .dev-log-btn:hover {
+            background: rgba(61, 78, 159, 1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 0;
+            border: 2px solid #3d4e9f;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 0;
+        }
+
+        .modal-header {
+            background: #3d4e9f;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2d3e8f;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.3em;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .log-entry {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-date {
+            color: #3d4e9f;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .log-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .log-text strong {
+            color: #3d4e9f;
+        }
+
+        .log-text a {
+            color: #3d4e9f;
+            word-break: break-all;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🌈 원소 방출 스펙트럼 퀴즈</h1>
+        <h1>원소 방출 스펙트럼 퀴즈</h1>
         
-        <div class="controls">
-            <button class="btn" onclick="generateQuiz(2, 'emission')">2개 섞기 (방출)</button>
-            <button class="btn" onclick="generateQuiz(3, 'emission')">3개 섞기 (방출)</button>
-            <button class="btn" onclick="generateQuiz(4, 'emission')">4개 섞기 (방출)</button>
-            <button class="btn show" onclick="showAnswer()">정답 확인</button>
-            <button class="btn" onclick="generateQuiz(2, 'absorption')">2개 섞기 (흡수)</button>
-            <button class="btn" onclick="generateQuiz(3, 'absorption')">3개 섞기 (흡수)</button>
-            <button class="btn" onclick="generateQuiz(4, 'absorption')">4개 섞기 (흡수)</button>
-            <button class="btn hide" onclick="hideAnswer()">정답 가리기</button>
-        </div>
-
         <div class="main-content">
             <div class="left-panel">
-                <div class="spectrum-display" id="spectrumDisplay">
+                <div class="spectrum-display">
                     <div class="spectrum-grid" id="spectrumGrid">
-                        <!-- 스펙트럼 표시 영역 -->
+                        <!-- 스펙트럼이 여기에 동적으로 생성됩니다 -->
                     </div>
                 </div>
             </div>
 
             <div class="right-panel">
+                <div class="controls">
+                    <button class="btn" onclick="generateQuiz(2, 'emission')">방출 2개</button>
+                    <button class="btn" onclick="generateQuiz(3, 'emission')">방출 3개</button>
+                    <button class="btn" onclick="generateQuiz(2, 'absorption')">흡수 2개</button>
+                    <button class="btn" onclick="generateQuiz(3, 'absorption')">흡수 3개</button>
+                    <button class="btn" onclick="generateQuiz(4, 'emission')">방출 4개</button>
+                    <button class="btn" onclick="generateQuiz(5, 'emission')">방출 5개</button>
+                    <button class="btn" onclick="generateQuiz(4, 'absorption')">흡수 4개</button>
+                    <button class="btn" onclick="generateQuiz(5, 'absorption')">흡수 5개</button>
+                    <button class="btn show" onclick="showAnswer()">정답 표시</button>
+                    <button class="btn hide" onclick="hideAnswer()">정답 숨김</button>
+                </div>
+
                 <div class="quiz-section hidden" id="quizSection">
                     <div class="quiz-spectrum" id="quizSpectrum">
-                        <h3>혼합 스펙트럼 문제</h3>
-                        <!-- 혼합 스펙트럼 표시 -->
+                        <!-- 퀴즈 스펙트럼이 여기에 표시됩니다 -->
                     </div>
+
                     <div class="checkbox-grid" id="checkboxGrid">
-                        <!-- 원소 선택 체크박스 -->
+                        <!-- 체크박스가 여기에 동적으로 생성됩니다 -->
                     </div>
-                    <button class="submit-btn" onclick="checkAnswer()">제출</button>
+
+                    <button class="submit-btn" onclick="checkAnswer()">정답 확인</button>
                     <div id="resultMessage"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="copyright">
+        ⓒ 2025 충남삼성고등학교 신도경T<br>
+        <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a>
+    </div>
+
+    <button class="dev-log-btn" id="DevLogBtn">개발자 로그</button>
+
+    <div class="modal" id="devLogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>개발자 로그</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body" id="DevLogContent">
+                <div class="log-entry">
+                    <div class="log-date">2025. 10. 13. (월)</div>
+                    <div class="log-text">
+                        <strong>원소 스펙트럼 서비스 시작</strong><br>
+                        시험 문제용 지도 및 그래프 생성 툴인 GeoTester를 공개하였습니다. <a href="https://blog.naver.com/rainshadow21/224039391343" target="_blank">https://blog.naver.com/rainshadow21/224039391343</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 원소별 방출 스펙트럼 데이터 (nm)
+        // 원소 데이터 (nm 단위)
         const ELEMENTS = {
-            'H': [410, 434, 486, 656],
-            'He': [447, 471, 492, 501, 587, 667, 706],
-            'Ne': [540, 585, 588, 594, 597, 603, 607, 616, 621, 626, 638, 640, 650, 659, 692, 703],
-            'Na': [589],
-            'Hg': [404, 436, 546, 577, 579],
-            'Li': [610, 670],
-            'Kr': [427, 431, 436, 557, 587, 642, 645, 758, 769]
+            'H': [410.2, 434.0, 486.1, 656.3],
+            'He': [447.1, 471.3, 492.2, 501.6, 587.6, 667.8, 706.5],
+            'Li': [460.3, 497.2, 610.4, 670.8],
+            'C': [426.7, 505.2, 538.0, 580.1, 658.8],
+            'N': [399.5, 404.1, 413.1, 444.7, 500.5, 567.9, 648.2, 661.1],
+            'O': [436.8, 441.5, 464.9, 533.1, 615.6, 645.6],
+            'Na': [498.3, 568.3, 568.8, 588.9, 589.6, 615.4, 616.1],
+            'Mg': [470.3, 516.7, 517.3, 518.4],
+            'Ca': [393.4, 396.8, 422.7, 445.5, 518.9, 558.9, 585.7, 610.3, 612.2, 616.2, 643.9, 646.3, 649.4, 650.9, 714.8],
+            'Fe': [404.6, 438.4, 466.8, 489.1, 495.8, 516.7, 526.9, 532.8, 537.1, 559.9],
+            'Sr': [407.8, 421.6, 460.7, 483.2, 487.2, 496.2, 689.3, 707.0],
+            'Ba': [455.4, 487.9, 493.4, 553.5, 577.8, 614.2, 659.5, 705.9, 719.6, 728.0]
         };
 
+        const allElements = Object.keys(ELEMENTS);
         let selectedElements = [];
         let quizMode = 'emission';
-        const allElements = Object.keys(ELEMENTS);
 
         // 파장을 RGB 색상으로 변환
-        function wavelengthToRgb(wavelength) {
-            const gamma = 0.8;
-            let r, g, b;
+        function wavelengthToRgb(wavelength, gamma = 0.8) {
+            let r = 0, g = 0, b = 0;
 
             if (wavelength < 380 || wavelength > 750) {
                 return 'rgb(0, 0, 0)';
@@ -495,28 +681,26 @@
             quizSpectrum.appendChild(spectrumBar);
             quizSpectrum.appendChild(scale);
 
-            // 체크박스 생성
+            // 원소 선택 버튼 생성
             checkboxDiv.innerHTML = '';
             allElements.forEach(element => {
                 const checkboxItem = document.createElement('div');
                 checkboxItem.className = 'checkbox-item';
-                checkboxItem.innerHTML = `
-                    <input type="checkbox" id="check_${element}" value="${element}">
-                    <label for="check_${element}">${element}</label>
-                `;
+                checkboxItem.textContent = element;
+                checkboxItem.dataset.element = element;
+                
+                checkboxItem.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                });
+                
                 checkboxDiv.appendChild(checkboxItem);
             });
         }
 
         // 정답 확인
         function checkAnswer() {
-            const checkboxes = document.querySelectorAll('#checkboxGrid input[type="checkbox"]');
-            const selected = [];
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    selected.push(cb.value);
-                }
-            });
+            const selectedItems = document.querySelectorAll('.checkbox-item.selected');
+            const selected = Array.from(selectedItems).map(item => item.dataset.element);
 
             const correct = new Set(selectedElements);
             const guessed = new Set(selected);
@@ -550,6 +734,22 @@
         function hideAnswer() {
             showAllSpectra(false);
         }
+
+        // 모달 관련 기능
+        document.getElementById('DevLogBtn').addEventListener('click', function() {
+            document.getElementById('devLogModal').classList.add('show');
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('devLogModal').classList.remove('show');
+        });
+
+        // 모달 외부 클릭시 닫기
+        document.getElementById('devLogModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
 
         // 초기 실행
         function initializeApp() {
